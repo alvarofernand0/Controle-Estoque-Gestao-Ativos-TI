@@ -1,0 +1,10 @@
+CREATE DATABASE TesteTestando;
+GO
+
+USE TesteTestando;
+GO
+
+CREATE TABLE Usuario(
+	Id SMALLINT IDENTITY PRIMARY KEY,
+
+);
