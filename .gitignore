@@ -1,0 +1,50 @@
+# ===================================================================
+# Ficheiro .gitignore para projetos SQL Server (SSDT / SSMS)
+# ===================================================================
+
+# Ficheiros específicos do utilizador
+# Contêm configurações locais, como strings de conexão e histórico.
+*.suo
+*.user
+*.sqlproj.user
+
+# Resultados da compilação (Build)
+# Ficheiros gerados automaticamente durante o processo de build.
+*.dbmdl
+*.jfm
+*.pdw
+*.precompiled.sql
+project.lock.json
+project.assets.json
+*.dacpac
+*.publish.xml
+
+# Pastas de resultados de compilação
+bin/
+obj/
+sql/
+
+# Ficheiros de dados e logs do SQL Server
+# Nunca adiciones ficheiros de base de dados ao Git!
+*.mdf
+*.ldf
+*.ndf
+
+# Ficheiros de backup
+*.bak
+*.trn
+
+# Ficheiros de sistema operativo comuns
+.DS_Store
+Thumbs.db
+
+# Diretórios de ferramentas e pacotes
+packages/
+*.vs/
+.vs/
+.vscode/
+
+# Ficheiros de relatório e depuração
+*.rpt
+*.trc
+BuildLog.htm
