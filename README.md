@@ -63,9 +63,9 @@
   
 ## 📌 Requisitos Não Funcionais
 
-  •	O sistema deve ser responsivo e acessível via desktop e dispositivos móveis.
-  •	O sistema deve permitir integração com planilhas (importação/exportação em CSV/XLSX).
-  •	O sistema deve ter autenticação segura (senha forte, opção de MFA).
-  •	O sistema deve ter capacidade de escalabilidade para suportar aumento de itens no estoque (TI e limpeza).
-  •	O sistema deve permitir filtros e buscas rápidas por categoria de item (TI, limpeza, outros).
+    •	O sistema deve ser responsivo e acessível via desktop e dispositivos móveis.
+    •	O sistema deve permitir integração com planilhas (importação/exportação em CSV/XLSX).
+    •	O sistema deve ter autenticação segura (senha forte, opção de MFA).
+    •	O sistema deve ter capacidade de escalabilidade para suportar aumento de itens no estoque (TI e limpeza).
+    •	O sistema deve permitir filtros e buscas rápidas por categoria de item (TI, limpeza, outros).
 
