@@ -196,27 +196,28 @@ CREATE TABLE Movimentacao (
 	CONSTRAINT FK_Movimentacao_ColaboradorDestino FOREIGN KEY (IdColaboradorDestino) REFERENCES Colaborador (Id)
 );
 GO
----Feito Até aqui
 
 CREATE TABLE LicencaSoftware (
-	Id INTEGER NOT NULL IDENTITY PRIMARY KEY,
+	Id INTEGER IDENTITY,
 	NomeSoftware VARCHAR(255) NOT NULL,
 	ChaveProduto VARCHAR(255) NOT NULL,
-	DataExpiracao DATE NOT NULL
+	DataExpiracao DATE NOT NULL,
+
+	CONSTRAINT PK_LicencaSoftware PRIMARY KEY (Id)
 );
 GO
 
 CREATE TABLE LicencaAtivo (
 	IdLicencaSoftware INTEGER NOT NULL,
 	IdAtivoTi INTEGER NOT NULL,
-	PRIMARY KEY(IdLicencaSoftware, IdAtivoTi),
-	FOREIGN KEY(IdLicencaSoftware) REFERENCES LicencaSoftware(Id),
-	FOREIGN KEY(IdAtivoTi) REFERENCES AtivosTi(Id)
+
+	CONSTRAINT FK_LicencaAtivo_LicencaSoftware FOREIGN KEY (IdLicencaSoftware) REFERENCES LicencaSoftware (Id),
+	CONSTRAINT FK_LicencaAtivo_AtivosTi FOREIGN KEY (IdAtivoTi) REFERENCES AtivosTi (Id)
 );
 GO
 
 CREATE TABLE Manutencao (
-	Id INTEGER NOT NULL IDENTITY PRIMARY KEY,
+	Id INTEGER IDENTITY,
 	IdAtivoTi INTEGER NOT NULL,
 	TipoManutencao VARCHAR(20) NOT NULL,
 	DataInicio DATE NOT NULL,
@@ -224,6 +225,8 @@ CREATE TABLE Manutencao (
 	DescricaoProblema VARCHAR(1000) NOT NULL,
 	DescricaoServicoRealizado VARCHAR(1000),
 	Custo DECIMAL(10,2) NOT NULL,
-	FOREIGN KEY(IdAtivoTi) REFERENCES AtivosTi(Id)
+
+	CONSTRAINT PK_Manutencao PRIMARY KEY (Id),
+	CONSTRAINT FK_Manutencao_AtivosTi FOREIGN KEY (IdAtivoTi) REFERENCES AtivosTi (Id)
 );
 GO
