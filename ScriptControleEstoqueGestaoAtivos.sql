@@ -67,6 +67,8 @@ CREATE TABLE Usuario (
 	Email VARCHAR(255) NOT NULL,
 	SenhaHash VARCHAR(255) NOT NULL,
 	Ativo BIT NOT NULL,
+	UsuarioModificacao VARCHAR(60) NOT NULL,
+	DataModificacao TIMESTAMP NOT NULL,
 
 	CONSTRAINT PK_Usuario PRIMARY KEY (Id),
 	CONSTRAINT UK_Usuario_Email UNIQUE (Email)
