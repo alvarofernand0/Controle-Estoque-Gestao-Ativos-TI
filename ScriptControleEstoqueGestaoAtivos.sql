@@ -166,28 +166,17 @@ CREATE TABLE AtivosTi (
 	CONSTRAINT UK_AtivosTi_NumeroSerie UNIQUE (NumeroSerie)
 );
 GO
----Feito Até aqui
-
-CREATE TABLE LogAuditoria (
-	Id INTEGER NOT NULL IDENTITY PRIMARY KEY,
-	IdUsuario INTEGER NOT NULL,
-	TabelaAfetada VARCHAR(60) NOT NULL,
-	IdRegistroAfetado INTEGER NOT NULL,
-	Acao VARCHAR(100) NOT NULL,
-	DataHoraAlteracao DATETIME NOT NULL,
-	Detalhes VARCHAR(300),
-	FOREIGN KEY(IdUsuario) REFERENCES Usuario(Id)
-);
-GO
 
 CREATE TABLE TipoMovimentacao (
-	Id SMALLINT NOT NULL IDENTITY PRIMARY KEY,
-	Nome VARCHAR(30) NOT NULL
+	Id SMALLINT IDENTITY,
+	Nome VARCHAR(30) NOT NULL,
+
+	CONSTRAINT PK_TipoMovimentacao PRIMARY KEY (Id)
 );
 GO
 
 CREATE TABLE Movimentacao (
-	Id INTEGER NOT NULL IDENTITY PRIMARY KEY,
+	Id INTEGER IDENTITY,
 	IdTipoMovimentacao SMALLINT NOT NULL,
 	IdUsuarioSolicitante INTEGER NOT NULL,
 	IdMaterial INTEGER,
@@ -197,14 +186,17 @@ CREATE TABLE Movimentacao (
 	DataMovimentacao DATETIME NOT NULL,
 	Justificativa VARCHAR(500) NOT NULL,
 	Quantidade SMALLINT,
-	FOREIGN KEY(IdTipoMovimentacao) REFERENCES TipoMovimentacao(Id),
-	FOREIGN KEY(IdUsuarioSolicitante) REFERENCES Usuario(Id),
-	FOREIGN KEY(IdMaterial) REFERENCES Material(Id),
-	FOREIGN KEY(IdAtivoTi) REFERENCES AtivosTi(Id),
-	FOREIGN KEY(IdColaboradorOrigem) REFERENCES Colaborador(Id),
-	FOREIGN KEY(IdColaboradorDestino) REFERENCES Colaborador(Id)
+	
+	CONSTRAINT PK_Movimentacao PRIMARY KEY (Id),
+	CONSTRAINT FK_Movimentacao_TipoMovimentacao FOREIGN KEY (IdTipoMovimentacao) REFERENCES TipoMovimentacao (Id),
+	CONSTRAINT FK_Movimentacao_Usuario FOREIGN KEY (IdUsuarioSolicitante) REFERENCES Usuario (Id),
+	CONSTRAINT FK_Movimentacao_Material FOREIGN KEY (IdMaterial) REFERENCES Material (Id),
+	CONSTRAINT FK_Movimentacao_AtivosTi FOREIGN KEY (IdAtivoTi) REFERENCES AtivosTi (Id),
+	CONSTRAINT FK_Movimentacao_ColaboradorOrigem FOREIGN KEY (IdColaboradorOrigem) REFERENCES Colaborador (Id),
+	CONSTRAINT FK_Movimentacao_ColaboradorDestino FOREIGN KEY (IdColaboradorDestino) REFERENCES Colaborador (Id)
 );
 GO
+---Feito Até aqui
 
 CREATE TABLE LicencaSoftware (
 	Id INTEGER NOT NULL IDENTITY PRIMARY KEY,
